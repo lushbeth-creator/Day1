@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Day 1: Solutions, Pricing &amp; Deal Onboarding</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --blue:#5D70AE; --teal:#59A398; --navy:#1B2F5B; --gray:#444;
+    --border:#d8dce8; --gradbottom:#e8edf8;
+    --tip-border:#A6B3D5; --tip-bg:#F3F6FF;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0; padding:0; background:transparent;
+    font-family:'Inter',sans-serif; color:var(--gray);
+  }
+  .wrap{width:100%; padding:16px; box-sizing:border-box;}
+
+  .flight-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:16px;}
+  .flight-card{
+    background:linear-gradient(to bottom, #ffffff 0%, var(--gradbottom) 100%);
+    border:1px solid var(--border); border-radius:10px;
+    padding:20px 18px;
+    display:flex; flex-direction:column;
+    transition:transform .15s ease, box-shadow .15s ease;
+  }
+  .flight-card:hover{
+    transform:translateY(-2px) scale(1.01);
+    box-shadow:0 6px 16px rgba(27,47,91,.10);
+  }
+
+  .icon-window{
+    width:40px; height:40px; border-radius:8px;
+    background:linear-gradient(to bottom, var(--tip-bg) 0%, #E4E9F7 100%);
+    border:1px solid var(--tip-border);
+    display:flex; align-items:center; justify-content:center;
+    margin-bottom:14px; flex-shrink:0;
+  }
+  .icon-window svg{
+    width:20px; height:20px; stroke:var(--teal); fill:none;
+    stroke-width:1.8; stroke-linecap:round; stroke-linejoin:round;
+  }
+
+  .card-eyebrow{
+    color:var(--teal); text-transform:uppercase; font-size:12px;
+    font-weight:700; letter-spacing:.06em; margin:0 0 8px;
+  }
+  .card-title{color:var(--navy); font-weight:700; font-size:16px; line-height:1.35; margin:0 0 10px;}
+  .card-body{color:#555; font-size:14px; line-height:1.6; margin:0;}
+
+  .section{margin-bottom:28px;}
+  .section:last-child{margin-bottom:0;}
+  .section .eyebrow{
+    color:var(--teal); font-size:12px; font-weight:700;
+    letter-spacing:.04em; text-transform:uppercase; margin:0 0 10px;
+  }
+
+  .prompt{
+    padding:22px 24px;
+    background:linear-gradient(to bottom, #ffffff 0%, var(--gradbottom) 100%);
+    border:1px solid var(--border); border-radius:8px;
+  }
+  .prompt h3{color:var(--navy); font-size:18px; margin:0 0 12px;}
+  .prompt ul{margin:0; padding-left:18px;}
+  .prompt li{font-size:14px; color:#555; margin-bottom:8px; line-height:1.5;}
+  .prompt li:last-child{margin-bottom:0;}
+
+  @media (max-width:900px){
+    .flight-grid{grid-template-columns:1fr;}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="section">
+    <div class="flight-grid">
+      <div class="flight-card">
+        <div class="icon-window">
+          <svg viewBox="0 0 24 24"><circle cx="7" cy="7" r="2.5"/><circle cx="17" cy="17" r="2.5"/><path d="M6 18L18 6"/></svg>
+        </div>
+        <p class="card-eyebrow">Pricing</p>
+        <h3 class="card-title">Pricing Models</h3>
+        <p class="card-body">Compliance history, Dual Pricing, Surcharge, and Interchange Plus.</p>
+      </div>
+      <div class="flight-card">
+        <div class="icon-window">
+          <svg viewBox="0 0 24 24"><path d="M9 18h6M10 21h4M12 3a6 6 0 00-3 11.2c.6.4 1 1.1 1 1.8h4c0-.7.4-1.4 1-1.8A6 6 0 0012 3z"/></svg>
+        </div>
+        <p class="card-eyebrow">Solutions</p>
+        <h3 class="card-title">Solutions &amp; Equipment Financing</h3>
+        <p class="card-body">Matching the merchant scenario to the right solution.</p>
+      </div>
+      <div class="flight-card">
+        <div class="icon-window">
+          <svg viewBox="0 0 24 24"><path d="M9 4h6a1 1 0 011 1v1H8V5a1 1 0 011-1z"/><rect x="6" y="6" width="12" height="15" rx="1.5"/><path d="M9 12h6M9 16h4"/></svg>
+        </div>
+        <p class="card-eyebrow">Deal Boarding</p>
+        <h3 class="card-title">Stratus Deal Boarding</h3>
+        <p class="card-body">Required documentation, step by step process, and common errors to avoid.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <p class="eyebrow">Recap</p>
+    <div class="prompt">
+      <h3>Let's Hear It</h3>
+      <ul>
+        <li>What has your onboarding experience been like so far?</li>
+        <li>How did you feel about the assigned learning, anything that clicked or anything that could use another look?</li>
+        <li>What was Field Day Friday like for you? Any highlights worth sharing with the room?</li>
+      </ul>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
