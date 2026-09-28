@@ -62,7 +62,7 @@
       <div class="actions">
         <a class="btn primary" href="https://kahoot.it/" target="_blank" rel="noopener">Join the Kahoot</a>
         <a class="btn alt" href="https://play.kahoot.it/v2/?quizId=da19dc0e-9f53-4fcd-9051-e12fda1ed369&amp;hostId=fe600169-dc79-48e8-b81c-dd7d82dcedbe" target="_blank" rel="noopener">Launch Host Screen</a>
-        <a class="btn alt" href="https://propelrpay1.sharepoint.com/sites/Training/SitePages/Day-1.aspx#today-s-flight-plan-______________________________________________________________________" target="_top">Start the Flight Plan &rarr;</a>
+        <a class="btn alt" id="flightPlanLink" href="https://propelrpay1.sharepoint.com/sites/Training/SitePages/Day-1.aspx#today-s-flight-plan-______________________________________________________________________" target="_top">Start the Flight Plan &rarr;</a>
       </div>
     </div>
     <aside class="glass" aria-labelledby="play-title">
@@ -72,5 +72,33 @@
     </aside>
   </div>
 </section>
+<script>
+(function(){
+  var link=document.getElementById('flightPlanLink');
+  var anchor='today-s-flight-plan-______________________________________________________________________';
+  var pagePath='/sites/Training/SitePages/Day-1.aspx';
+
+  link.addEventListener('click',function(e){
+    e.preventDefault();
+
+    // 1. If the page can reach the SharePoint page directly, scroll smoothly with no navigation at all.
+    try{
+      var doc=window.top.document;
+      var target=doc.getElementById(anchor)||doc.querySelector('[data-anchor-id="'+anchor+'"],a[name="'+anchor+'"]');
+      if(target){target.scrollIntoView({behavior:'smooth',block:'start'});return;}
+    }catch(err){ /* different domain: fall through */ }
+
+    // 2. Otherwise change only the #anchor on the page that is already open.
+    //    When the address matches the open page exactly, the browser jumps without reloading.
+    var base=link.href.split('#')[0];
+    try{
+      var ref=document.referrer||'';
+      if(ref.indexOf(pagePath)!==-1){base=ref.split('#')[0];}
+    }catch(err){}
+    try{window.top.location.href=base+'#'+anchor;}
+    catch(err){window.open(base+'#'+anchor,'_top');}
+  });
+})();
+</script>
 </body>
 </html>
