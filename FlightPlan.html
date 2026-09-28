@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Day 1 Flight Plan</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --blue:#5D70AE;
+    --green:#59A398;
+    --navy:#1B2F5B;
+    --purple:#A6B3D5;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0;background:transparent;width:100%;overflow-x:hidden}
+  body{
+    padding:4px 6px 6px;
+    font-family:Inter,"Segoe UI",Arial,sans-serif;
+    color:#000;
+    line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+  }
+  h2{
+    margin:0 0 8px;
+    color:var(--navy);
+    font-size:20px;
+    font-weight:700;
+    line-height:1.3;
+  }
+  .intro{
+    margin:0 0 20px;
+    font-size:18px;
+    color:#000;
+  }
+  .grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:16px;
+  }
+  .card{
+    min-width:0;
+    background:linear-gradient(135deg,#ffffff 0%,#E4E9F7 100%);
+    border:1px solid var(--purple);
+    border-radius:16px;
+    padding:22px;
+  }
+  .icon{
+    width:48px;
+    height:48px;
+    border-radius:12px;
+    background:linear-gradient(to bottom,#F3F6FF 0%,#E4E9F7 100%);
+    border:1px solid var(--purple);
+    display:grid;
+    place-items:center;
+    margin-bottom:14px;
+  }
+  .icon svg{
+    width:24px;
+    height:24px;
+    stroke:var(--green);
+    fill:none;
+    stroke-width:1.8;
+    stroke-linecap:round;
+    stroke-linejoin:round;
+  }
+  .card h3{
+    margin:0 0 6px;
+    color:var(--navy);
+    font-size:20px;
+    font-weight:700;
+    line-height:1.3;
+  }
+  .card p{
+    margin:0;
+    font-size:18px;
+    color:#000;
+  }
+  @media (max-width:900px){
+    .grid{grid-template-columns:1fr 1fr}
+  }
+  @media (max-width:620px){
+    .grid{grid-template-columns:1fr}
+  }
+</style>
+</head>
+<body>
+<section aria-labelledby="fp-title">
+  <h2 id="fp-title">Foundation before solutioning.</h2>
+  <p class="intro">The sequence is deliberate. Pilots first learn how a transaction works, then why the ecosystem carries risk, then how controls such as underwriting, KYC, PCI DSS and monitoring manage that risk. Only then do we apply those ideas to the choices a Pilot makes in the field.</p>
+  <div class="grid">
+    <article class="card">
+      <div class="icon" aria-hidden="true">
+        <!-- route: path between two points -->
+        <svg viewBox="0 0 24 24"><circle cx="6" cy="19" r="2.5"/><circle cx="18" cy="5" r="2.5"/><path d="M8.5 19H16a3.5 3.5 0 0 0 0-7H8a3.5 3.5 0 0 1 0-7h7.5"/></svg>
+      </div>
+      <h3>Follow the payment</h3>
+      <p>Trace authorization from customer to issuer and understand the role of the merchant, gateway, processor, acquirer and networks.</p>
+    </article>
+    <article class="card">
+      <div class="icon" aria-hidden="true">
+        <!-- magnifier with alert -->
+        <svg viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5 21 21"/><path d="M10.5 7.5v3.5"/><path d="M10.5 13.6v.1"/></svg>
+      </div>
+      <h3>Find the exposure</h3>
+      <p>Separate authorization from settlement and finality. Learn why an approved transaction can still create loss later.</p>
+    </article>
+    <article class="card">
+      <div class="icon" aria-hidden="true">
+        <!-- shield check -->
+        <svg viewBox="0 0 24 24"><path d="M12 3 5 6v5.5c0 4.3 2.9 8 7 9.5 4.1-1.5 7-5.2 7-9.5V6l-7-3Z"/><path d="m9 12 2.2 2.2L15.5 10"/></svg>
+      </div>
+      <h3>Manage the risk</h3>
+      <p>Connect merchant verification, accurate applications, fraud controls, PCI DSS and monitoring to the same risk lifecycle.</p>
+    </article>
+  </div>
+</section>
+</body>
+</html>
