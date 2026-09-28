@@ -1,0 +1,425 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Propelr | History of Payments</title>
+  <style>
+    :root {
+      --blue:#5D70AE;
+      --green:#59A398;
+      --purple:#A6B3D5;
+      --light-purple:#F3F6FF;
+      --light-blue:#E4E9F7;
+      --light-mint:#DAF3EF;
+      --navy:#1B2F5B;
+      --ink:#000000;
+      --gold-bg:#FFF8E6;
+      --gold-border:#B8860B;
+      --gold-text:#9C6B00;
+    }
+
+    * { box-sizing:border-box; }
+
+    body {
+      margin:0;
+      padding:.5rem;
+      background:transparent;
+      color:var(--ink);
+      font-family:Inter, Aptos, "Segoe UI", Arial, sans-serif;
+    }
+
+    button { font:inherit; }
+
+    .experience { width:100%; margin:auto; }
+
+    .eyebrow {
+      margin:0 0 8px;
+      color:var(--green);
+      font-size:14px;
+      font-weight:800;
+      letter-spacing:.1em;
+      text-transform:uppercase;
+    }
+
+    h1 {
+      margin:0 0 12px;
+      color:var(--navy);
+      font-size:20px;
+      font-weight:700;
+      line-height:1.3;
+    }
+
+    .intro-copy {
+      margin:0 0 20px;
+      font-size:18px;
+      line-height:1.65;
+      color:var(--ink);
+    }
+
+    .intro {
+      margin-bottom:28px;
+    }
+
+
+    .milestones {
+      display:flex;
+      flex-wrap:wrap;
+      justify-content:center;
+      gap:10px;
+      margin-bottom:22px;
+    }
+
+    .milestone {
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      padding:8px 18px 8px 8px;
+      border:1px solid var(--purple);
+      border-radius:999px;
+      background:linear-gradient(to bottom,#ffffff 0%,var(--light-mint) 100%);
+      color:var(--navy);
+      cursor:pointer;
+      transition:background .15s ease,border-color .15s ease,color .15s ease;
+    }
+
+    .milestone:hover {
+      border-color:var(--blue);
+      background:linear-gradient(to bottom,#ffffff 0%,var(--light-blue) 100%);
+    }
+
+    .marker {
+      display:grid;
+      place-items:center;
+      width:34px;
+      height:34px;
+      flex-shrink:0;
+      color:var(--blue);
+      background:#ffffff;
+      border-radius:50%;
+      transition:background .18s ease,color .18s ease;
+    }
+
+    .marker svg {
+      width:18px;
+      height:18px;
+      fill:none;
+      stroke:currentColor;
+      stroke-width:1.8;
+      stroke-linecap:round;
+      stroke-linejoin:round;
+    }
+
+    .milestone-text { display:flex; flex-direction:column; text-align:left; }
+
+    .year {
+      display:block;
+      margin-bottom:2px;
+      color:var(--green);
+      font-size:12px;
+      font-weight:800;
+      letter-spacing:.06em;
+      text-transform:uppercase;
+    }
+
+    .name {
+      display:block;
+      color:var(--navy);
+      font-size:15px;
+      font-weight:700;
+      line-height:1.2;
+      white-space:nowrap;
+    }
+
+    .milestone[aria-selected="true"] {
+      background:var(--green);
+      border-color:var(--green);
+      color:#ffffff;
+    }
+
+    .milestone[aria-selected="true"] .marker { color:var(--green); }
+    .milestone[aria-selected="true"] .year,
+    .milestone[aria-selected="true"] .name { color:#ffffff; }
+
+    .next-row { display:flex; justify-content:flex-end; margin-bottom:22px; }
+
+    .next-pill {
+      display:inline-block;
+      border:none;
+      background:none;
+      padding:0;
+      color:var(--navy);
+      font-size:16px;
+      font-weight:700;
+      cursor:pointer;
+      transition:color .15s ease;
+    }
+
+    .next-pill:hover { color:var(--green); }
+
+    .milestone:focus-visible {
+      outline:3px solid var(--purple);
+      outline-offset:3px;
+      border-radius:999px;
+    }
+
+    .detail {
+      display:grid;
+      grid-template-columns:minmax(210px,.82fr) minmax(0,1.18fr);
+      gap:24px;
+      margin-bottom:22px;
+      padding:28px;
+      background:var(--light-purple);
+      border:1px solid var(--purple);
+      border-radius:16px;
+    }
+
+    .detail-kicker {
+      margin:0 0 6px;
+      color:var(--green);
+      font-size:14px;
+      font-weight:800;
+      letter-spacing:.1em;
+      text-transform:uppercase;
+    }
+
+    .detail h2 {
+      margin:0 0 10px;
+      color:var(--navy);
+      font-size:20px;
+      font-weight:700;
+      line-height:1.3;
+    }
+
+    .detail-summary {
+      margin:0;
+      color:var(--ink);
+      font-size:18px;
+      line-height:1.6;
+    }
+
+    .change-grid {
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:12px;
+    }
+
+    .change-card {
+      min-width:0;
+      padding:16px;
+      background:linear-gradient(135deg,#ffffff 0%,var(--light-blue) 100%);
+      border:1px solid var(--purple);
+      border-radius:12px;
+    }
+
+    .change-card span {
+      display:block;
+      margin-bottom:7px;
+      color:var(--green);
+      font-size:14px;
+      font-weight:800;
+      letter-spacing:.09em;
+      text-transform:uppercase;
+    }
+
+    .change-card p {
+      margin:0;
+      color:var(--ink);
+      font-size:18px;
+      line-height:1.5;
+    }
+
+    .takeaway {
+      display:flex;
+      gap:16px;
+      align-items:flex-start;
+      padding:20px 22px;
+      color:#ffffff;
+      background:var(--navy);
+      border-radius:15px;
+    }
+
+    .takeaway-icon {
+      display:grid;
+      place-items:center;
+      flex:0 0 34px;
+      width:34px;
+      height:34px;
+      color:var(--navy);
+      background:var(--light-mint);
+      border-radius:50%;
+      font-weight:900;
+    }
+
+    .takeaway strong { display:block; margin-bottom:4px; font-size:20px; }
+    .takeaway p { margin:0; color:#E9EDFA; font-size:18px; line-height:1.55; }
+
+    @media (max-width:900px) {
+      .intro,.detail { grid-template-columns:1fr; }
+      .milestones { grid-template-columns:repeat(3,1fr); gap:16px 8px; }
+      .change-grid { grid-template-columns:1fr; }
+    }
+
+    @media (max-width:540px) {
+      .milestones { grid-template-columns:repeat(2,1fr); }
+    }
+
+    @media (prefers-reduced-motion:reduce) {
+      *,*::before,*::after { transition:none!important; }
+    }
+  </style>
+</head>
+<body>
+  <main class="experience">
+    <section class="intro" aria-labelledby="page-title">
+      <div>
+        <h1 id="page-title">Convenience changed. Risk moved with it.</h1>
+        <p class="intro-copy">Payments evolved because people wanted commerce to become faster, easier and less dependent on location. Select each milestone to see what improved, what new exposure appeared and how the industry responded.</p>
+      </div>
+    </section>
+
+    <div class="milestones" role="tablist" aria-label="Payment history milestones">
+      <button class="milestone" role="tab" id="tab-0" aria-controls="history-detail" aria-selected="true" data-index="0">
+        <span class="marker"><svg viewBox="0 0 24 24"><path d="M4 9h16M5 9l1 11h12l1-11M8 9V6a4 4 0 0 1 8 0v3"/></svg></span>
+        <span class="milestone-text"><span class="year">Long ago</span><span class="name">Local trust</span></span>
+      </button>
+      <button class="milestone" role="tab" id="tab-1" aria-controls="history-detail" aria-selected="false" data-index="1">
+        <span class="marker"><svg viewBox="0 0 24 24"><path d="M4 5h16v14H4zM7 9h5M7 13h8M16 16h2"/></svg></span>
+        <span class="milestone-text"><span class="year">Early 1900s</span><span class="name">Checks</span></span>
+      </button>
+      <button class="milestone" role="tab" id="tab-2" aria-controls="history-detail" aria-selected="false" data-index="2">
+        <span class="marker"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 10h18M7 15h4"/></svg></span>
+        <span class="milestone-text"><span class="year">1950s</span><span class="name">Charge cards</span></span>
+      </button>
+      <button class="milestone" role="tab" id="tab-3" aria-controls="history-detail" aria-selected="false" data-index="3">
+        <span class="marker"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 9h18M6 13h8"/></svg></span>
+        <span class="milestone-text"><span class="year">1960s&ndash;70s</span><span class="name">Bank cards</span></span>
+      </button>
+      <button class="milestone" role="tab" id="tab-4" aria-controls="history-detail" aria-selected="false" data-index="4">
+        <span class="marker"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><rect x="7" y="9" width="5" height="4" rx="1"/><path d="M15 10h3M15 13h3"/></svg></span>
+        <span class="milestone-text"><span class="year">2000s&ndash;2015</span><span class="name">Digital + EMV</span></span>
+      </button>
+      <button class="milestone" role="tab" id="tab-5" aria-controls="history-detail" aria-selected="false" data-index="5">
+        <span class="marker"><svg viewBox="0 0 24 24"><rect x="7" y="2" width="10" height="20" rx="2"/><path d="M9 6h6M10 18h4M3 9c2-2 2-4 0-6M21 9c-2-2-2-4 0-6"/></svg></span>
+        <span class="milestone-text"><span class="year">Today</span><span class="name">Tap, wallet, click</span></span>
+      </button>
+    </div>
+
+    <div class="next-row">
+      <button type="button" class="next-pill" id="nextBtn">Next milestone &#8594;</button>
+    </div>
+
+    <article class="detail" id="history-detail" role="tabpanel" aria-labelledby="tab-0" tabindex="0">
+      <div>
+        <p class="detail-kicker" id="detailKicker"></p>
+        <h2 id="detailTitle"></h2>
+        <p class="detail-summary" id="detailSummary"></p>
+      </div>
+      <div class="change-grid">
+        <div class="change-card"><span>What became easier</span><p id="detailEase"></p></div>
+        <div class="change-card"><span>Where exposure appeared</span><p id="detailRisk"></p></div>
+        <div class="change-card"><span>Industry response</span><p id="detailResponse"></p></div>
+      </div>
+    </article>
+
+    <aside class="takeaway">
+      <div class="takeaway-icon" aria-hidden="true">&#8599;</div>
+      <div><strong>The pattern never changes.</strong><p>The industry keeps adding ways to verify identity, protect information, authorize transactions and monitor activity as payments become faster and more connected.</p></div>
+    </aside>
+  </main>
+
+  <script>
+    const history = [
+      {
+        kicker:"Local commerce",
+        title:"Trust was personal and nearby.",
+        summary:"Early transactions depended on physical money and relationships between people who often knew one another.",
+        ease:"A direct exchange made the transaction visible to both parties.",
+        risk:"Cash could be lost, stolen or counterfeited, and commerce was limited by location.",
+        response:"Physical controls, recordkeeping and local trust helped manage the risk."
+      },
+      {
+        kicker:"Checks expand reach",
+        title:"Payment could move without cash in hand.",
+        summary:"Checks allowed a customer to instruct a bank to transfer funds, expanding commerce beyond a physical exchange of currency.",
+        ease:"Customers could make larger payments without carrying cash.",
+        risk:"A merchant could accept payment before knowing whether funds were available or the check was legitimate.",
+        response:"Bank verification, clearing processes and returned-item procedures developed around the new exposure."
+      },
+      {
+        kicker:"Multipurpose charge cards",
+        title:"Buy now and settle the balance later.",
+        summary:"Products such as Diners Club helped popularize a card that could be accepted by multiple participating merchants.",
+        ease:"One payment credential could be used across a growing acceptance network.",
+        risk:"The issuer and accepting merchant now depended on the cardholder and transaction remaining valid.",
+        response:"Merchant agreements, authorization practices and organized acceptance networks grew in importance."
+      },
+      {
+        kicker:"Electronic authorization",
+        title:"Bank cards made approval faster and scalable.",
+        summary:"Magnetic stripes and electronic networks made it possible to route transaction information and receive a decision quickly.",
+        ease:"More merchants could accept cards and receive near real-time approvals.",
+        risk:"Card data could be copied, credentials could be stolen and fraud could travel farther than the local market.",
+        response:"Issuers, acquirers, processors and card networks expanded authorization and fraud-monitoring systems."
+      },
+      {
+        kicker:"Commerce becomes digital",
+        title:"EMV strengthened card-present security as ecommerce grew.",
+        summary:"EMV introduced dynamic transaction data at enabled terminals while online commerce made card-not-present acceptance commonplace.",
+        ease:"Customers gained more ways to pay in person and remotely.",
+        risk:"Counterfeit-card exposure became harder in chip transactions, while fraud increasingly targeted online credentials and accounts.",
+        response:"EMV, CVV, AVS, tokenization and stronger digital fraud controls addressed different parts of the risk."
+      },
+      {
+        kicker:"Connected commerce",
+        title:"The card may barely enter the room.",
+        summary:"Contactless cards, mobile wallets, stored credentials and embedded payments make acceptance faster and less visible.",
+        ease:"Customers can tap, click or pay inside another digital experience.",
+        risk:"Payment credentials and sensitive data can move across more devices, systems, vendors and channels.",
+        response:"Tokenization, encryption, PCI DSS, identity controls and real-time monitoring work together as layered defenses."
+      }
+    ];
+
+    const tabs = Array.from(document.querySelectorAll('.milestone'));
+    const panel = document.getElementById('history-detail');
+    let current = 0;
+
+    function showMilestone(index, moveFocus) {
+      current = index;
+      const item = history[index];
+      tabs.forEach((tab,i) => {
+        tab.setAttribute('aria-selected', String(i === index));
+        tab.tabIndex = i === index ? 0 : -1;
+      });
+      panel.setAttribute('aria-labelledby','tab-' + index);
+      document.getElementById('detailKicker').textContent = item.kicker;
+      document.getElementById('detailTitle').textContent = item.title;
+      document.getElementById('detailSummary').textContent = item.summary;
+      document.getElementById('detailEase').textContent = item.ease;
+      document.getElementById('detailRisk').textContent = item.risk;
+      document.getElementById('detailResponse').textContent = item.response;
+      if (moveFocus) tabs[index].focus();
+    }
+
+    tabs.forEach((tab,index) => {
+      tab.addEventListener('click',() => showMilestone(index,false));
+      tab.addEventListener('keydown',(event) => {
+        let next = index;
+        if (event.key === 'ArrowRight' || event.key === 'ArrowDown') next = (index + 1) % tabs.length;
+        else if (event.key === 'ArrowLeft' || event.key === 'ArrowUp') next = (index - 1 + tabs.length) % tabs.length;
+        else if (event.key === 'Home') next = 0;
+        else if (event.key === 'End') next = tabs.length - 1;
+        else return;
+        event.preventDefault();
+        showMilestone(next,true);
+      });
+    });
+
+    document.getElementById('nextBtn').addEventListener('click', () => {
+      showMilestone((current + 1) % tabs.length, false);
+    });
+
+    showMilestone(0,false);
+  </script>
+</body>
+</html>
