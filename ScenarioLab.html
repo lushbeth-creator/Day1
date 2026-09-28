@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Day 1 | Scenario Lab</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{--blue:#5D70AE;--green:#59A398;--navy:#1B2F5B;--purple:#A6B3D5}
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0;background:transparent;width:100%;overflow-x:hidden}
+  body{padding:4px 6px 6px;font-family:Inter,"Segoe UI",Arial,sans-serif;color:#000;line-height:1.55;-webkit-font-smoothing:antialiased}
+  h2{margin:0 0 8px;color:var(--navy);font-size:20px;font-weight:700;line-height:1.3}
+  .intro{margin:0 0 20px;font-size:18px}
+
+  .grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;align-items:stretch}
+  .card{min-width:0;padding:22px;border:1px solid var(--purple);border-radius:16px;background:linear-gradient(135deg,#ffffff 0%,#E4E9F7 100%)}
+  .eyebrow{margin:0 0 4px;color:var(--green);font-size:14px;font-weight:800;letter-spacing:.08em;text-transform:uppercase}
+  .card h3{margin:0 0 6px;color:var(--navy);font-size:20px;font-weight:700;line-height:1.3}
+  .card .setup{margin:0;font-size:18px}
+
+  .choices{display:grid;gap:8px;margin-top:16px}
+  .choice{
+    display:flex;align-items:flex-start;gap:12px;width:100%;
+    padding:12px 14px;border:1px solid var(--purple);border-radius:10px;
+    background:#fff;font:inherit;font-size:18px;color:#000;text-align:left;cursor:pointer;
+    transition:border-color .15s ease,background .15s ease;
+  }
+  .choice:hover:not(:disabled){border-color:var(--green);background:#F3F6FF}
+  .choice:focus-visible{outline:3px solid var(--purple);outline-offset:2px}
+  .choice:disabled{cursor:default}
+  .letter{flex-shrink:0;width:28px;height:28px;border-radius:50%;display:grid;place-items:center;font-size:14px;font-weight:700;color:var(--blue);background:#fff;border:1px solid var(--purple)}
+  .choice.right{border-color:var(--green);background:linear-gradient(135deg,#ffffff 0%,#DAF3EF 100%)}
+  .choice.right .letter{background:var(--green);border-color:var(--green);color:#fff}
+  .choice.wrong{border-color:#B8860B;background:#fff8e6}
+  .choice.wrong .letter{background:#B8860B;border-color:#B8860B;color:#fff}
+  .choice.dim{opacity:.55}
+
+  .feedback{display:none;margin-top:14px;padding:14px 16px;border-radius:0 12px 12px 0;font-size:18px;line-height:1.55}
+  .feedback.show{display:block}
+  .feedback.good{border-left:5px solid var(--green);background:linear-gradient(135deg,#ffffff 0%,#DAF3EF 100%);color:var(--navy)}
+  .feedback.warn{border-left:5px solid #B8860B;background:#fff8e6;color:#9C6B00}
+  .feedback strong{display:block;margin-bottom:2px}
+  .feedback .fb-body{color:#000}
+
+  .reset{display:none;margin-top:12px;padding:8px 14px;border:1px solid var(--blue);border-radius:9px;background:transparent;color:var(--blue);font:inherit;font-size:16px;font-weight:700;cursor:pointer}
+  .reset.show{display:inline-block}
+  .reset:hover,.reset:focus-visible{background:var(--green);border-color:var(--green);color:#fff}
+
+  @media (max-width:820px){.grid{grid-template-columns:1fr}}
+  @media (max-width:600px){.card{padding:18px}}
+</style>
+</head>
+<body>
+<section aria-labelledby="sl-title">
+  <h2 id="sl-title">What would you do?</h2>
+  <p class="intro">Use the same judgment you will need in the field. Select an answer to reveal the coaching point.</p>
+
+  <div class="grid">
+    <article class="card" data-scenario>
+      <p class="eyebrow">Scenario 1</p>
+      <h3>The merchant says, &ldquo;Just put us down as retail.&rdquo;</h3>
+      <p class="setup">The business model you uncovered during discovery does not match a straightforward retail environment, but the merchant believes another category will make approval easier.</p>
+      <div class="choices">
+        <button type="button" class="choice" data-good="0"><span class="letter">A</span><span>Use retail. The merchant knows their business best.</span></button>
+        <button type="button" class="choice" data-good="1"><span class="letter">B</span><span>Pause and escalate the actual business model for review.</span></button>
+      </div>
+      <div class="feedback" aria-live="polite"
+        data-good="Merchant category, business model and transaction environment must reflect reality. Document what the merchant actually does and escalate so the right team can review it."
+        data-warn="Never code around the truth. A category that does not match the real business creates risk after boarding. Document the actual business model and escalate instead."></div>
+      <button type="button" class="reset">Try again</button>
+    </article>
+
+    <article class="card" data-scenario>
+      <p class="eyebrow">Scenario 2</p>
+      <h3>&ldquo;Can you guarantee I'll be approved by Friday?&rdquo;</h3>
+      <p class="setup">The merchant needs equipment quickly and says they will sign today if you can guarantee approval and installation.</p>
+      <div class="choices">
+        <button type="button" class="choice" data-good="1"><span class="letter">A</span><span>Explain the process and provide only timelines you are authorized to provide.</span></button>
+        <button type="button" class="choice" data-good="0"><span class="letter">B</span><span>Guarantee Friday so the opportunity does not go cold.</span></button>
+      </div>
+      <div class="feedback" aria-live="polite"
+        data-good="Set expectations only for outcomes you control. Underwriting and implementation timing depend on other teams, so a clear explanation of the process protects the relationship."
+        data-warn="Do not present underwriting as a formality or implementation timing as certain when another team or partner controls the decision. A missed promise costs more than a slower yes."></div>
+      <button type="button" class="reset">Try again</button>
+    </article>
+  </div>
+</section>
+
+<script>
+document.querySelectorAll('[data-scenario]').forEach(function(card){
+  var choices=card.querySelectorAll('.choice');
+  var fb=card.querySelector('.feedback');
+  var reset=card.querySelector('.reset');
+  choices.forEach(function(btn){
+    btn.addEventListener('click',function(){
+      var good=btn.getAttribute('data-good')==='1';
+      choices.forEach(function(c){
+        c.disabled=true;
+        if(c.getAttribute('data-good')==='1') c.classList.add('right');
+        else if(c===btn) c.classList.add('wrong');
+        else c.classList.add('dim');
+      });
+      fb.className='feedback show '+(good?'good':'warn');
+      fb.innerHTML='<strong>'+(good?'That\u2019s the Pilot Standard.':'Not the Pilot Standard.')+'</strong><span class="fb-body">'+fb.getAttribute(good?'data-good':'data-warn')+'</span>';
+      reset.classList.add('show');
+    });
+  });
+  reset.addEventListener('click',function(){
+    choices.forEach(function(c){c.disabled=false;c.classList.remove('right','wrong','dim');});
+    fb.className='feedback';fb.innerHTML='';
+    reset.classList.remove('show');
+    choices[0].focus();
+  });
+});
+</script>
+</body>
+</html>
