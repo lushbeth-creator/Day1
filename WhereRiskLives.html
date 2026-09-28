@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Day 1 | Where Risk Lives</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{--blue:#5D70AE;--green:#59A398;--navy:#1B2F5B;--purple:#A6B3D5}
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0;background:transparent;width:100%;overflow-x:hidden}
+  body{padding:4px 6px 6px;font-family:Inter,"Segoe UI",Arial,sans-serif;color:#000;line-height:1.55;-webkit-font-smoothing:antialiased}
+  .risk-section{position:relative}
+  h2{margin:0 0 8px;color:var(--navy);font-size:20px;font-weight:700;line-height:1.3}
+  .intro{margin:0 0 20px;font-size:18px}
+  .grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+  .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:14px}
+  .card{min-width:0;padding:20px;border:1px solid var(--purple);border-radius:15px;background:linear-gradient(135deg,#ffffff 0%,#E4E9F7 100%)}
+  .card.stage{background:#ffffff}
+  .card.mint{background:linear-gradient(135deg,#ffffff 0%,#DAF3EF 100%);border-color:#a8d6cf}
+  .grid3 .card{display:flex;flex-direction:column}
+  .eyebrow{margin:0 0 4px;color:var(--green);font-size:14px;font-weight:800;letter-spacing:.08em;text-transform:uppercase}
+  .card h3{margin:0 0 6px;color:var(--navy);font-size:20px;font-weight:700;line-height:1.3}
+  .card p.body{margin:0;font-size:18px;color:#000}
+  .btn-secondary{align-self:flex-start;margin-top:auto;padding:9px 16px;border-radius:9px;border:1px solid var(--blue);background:transparent;color:var(--blue);font:inherit;font-size:16px;font-weight:700;cursor:pointer}
+  .btn-wrap{margin-top:auto;padding-top:14px}
+  .btn-secondary:hover,.btn-secondary:focus-visible{background:var(--green);border-color:var(--green);color:#fff}
+  .btn-secondary:focus-visible,.modal-close:focus-visible{outline:3px solid var(--purple);outline-offset:2px}
+
+  /* Pop-up: tinted overlay covers the section from the heading down, modal sits on top */
+  .overlay{
+    position:absolute;inset:0;z-index:20;display:none;
+    align-items:center;justify-content:center;padding:14px;
+    background:rgba(27,47,91,.55);border-radius:16px;
+  }
+  .overlay.open{display:flex}
+  .popout{
+    position:relative;width:100%;max-width:960px;max-height:100%;overflow-y:auto;
+    padding:24px 28px;
+    border:1px solid var(--purple);border-radius:16px;
+    background:linear-gradient(135deg,#ffffff 0%,#E4E9F7 100%);
+  }
+  .modal-close{position:absolute;top:12px;right:14px;width:36px;height:36px;border:0;background:transparent;color:var(--green);font-size:28px;line-height:1;cursor:pointer;border-radius:8px}
+  .modal-close:hover{color:var(--blue)}
+  .popout h3{margin:0 0 8px;padding-right:40px;color:var(--navy);font-size:20px;font-weight:700;line-height:1.3}
+  .popout .lead{margin:0 0 18px;font-size:18px}
+  .m-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+  .m-block p{margin:0;font-size:18px}
+  .m-block p.eyebrow{margin:0 0 4px;font-size:14px}
+  .say{margin-top:20px;padding:16px 18px;border-left:5px solid var(--green);border-radius:0 12px 12px 0;background:linear-gradient(135deg,#ffffff 0%,#DAF3EF 100%);font-size:18px}
+  .say strong{color:var(--navy)}
+
+  @media (max-width:900px){
+    .grid4{grid-template-columns:1fr 1fr}
+    .grid3{grid-template-columns:1fr}
+    .m-grid{grid-template-columns:1fr;gap:16px}
+  }
+  @media (max-width:620px){
+    .grid4{grid-template-columns:1fr}
+    .popout{padding:22px 20px}
+  }
+</style>
+</head>
+<body>
+<section class="risk-section" aria-labelledby="risk-title">
+  <h2 id="risk-title">Approval is a moment. Exposure continues.</h2>
+  <p class="intro">The ETA CPP framework treats Risk, Regulatory/Compliance/Security and Underwriting as distinct professional domains.</p>
+
+  <div class="grid4">
+    <article class="card stage"><p class="eyebrow">1 · Authorization</p><h3>The sale is approved</h3><p class="body">Funds or credit appear available and the transaction is allowed to continue.</p></article>
+    <article class="card stage"><p class="eyebrow">2 · Fulfillment</p><h3>Value is released</h3><p class="body">The merchant provides goods or services before every downstream risk is resolved.</p></article>
+    <article class="card stage"><p class="eyebrow">3 · Settlement</p><h3>Funds move</h3><p class="body">The acquiring side funds the merchant based on the expectation that the transaction remains valid.</p></article>
+    <article class="card stage"><p class="eyebrow">4 · After the sale</p><h3>Liability remains</h3><p class="body">Fraud, refunds, disputes and chargebacks can still change the outcome.</p></article>
+  </div>
+
+  <div class="grid3">
+    <article class="card">
+      <h3>KYC &amp; Underwriting</h3>
+      <p class="body">Know who the merchant is, what the business actually does and whether the application accurately reflects the risk being presented.</p>
+      <div class="btn-wrap"><button type="button" class="btn-secondary" data-open="kyc" aria-haspopup="dialog">Learn about KYC &amp; Underwriting</button></div>
+    </article>
+    <article class="card mint">
+      <h3>Transaction &amp; Data Controls</h3>
+      <p class="body">EMV, PIN, AVS, CVV and other fraud tools evaluate transactions while PCI DSS protects cardholder data environments.</p>
+      <div class="btn-wrap"><button type="button" class="btn-secondary" data-open="pci" aria-haspopup="dialog">Learn about PCI DSS</button></div>
+    </article>
+    <article class="card">
+      <h3>Ongoing Monitoring</h3>
+      <p class="body">Volume, ticket size, refunds and chargebacks matter after activation because a merchant's risk profile can change.</p>
+      <div class="btn-wrap"><button type="button" class="btn-secondary" data-open="monitor" aria-haspopup="dialog">Learn about Monitoring</button></div>
+    </article>
+  </div>
+
+  <!-- KYC & Underwriting -->
+  <div class="overlay" id="kyc"><div class="popout" role="dialog" aria-modal="true" aria-labelledby="kycTitle">
+    <button type="button" class="modal-close" aria-label="Close">&times;</button>
+    <p class="eyebrow">KYC &amp; Underwriting</p>
+    <h3 id="kycTitle">Know the merchant before the merchant is boarded.</h3>
+    <p class="lead">KYC (Know Your Customer) and underwriting confirm who the merchant is, what the business actually does and whether the application accurately reflects the risk being presented.</p>
+    <div class="m-grid">
+      <div class="m-block"><p class="eyebrow">What underwriting reviews</p><p>Business details, ownership, processing history, expected monthly volume, average ticket and supporting documentation.</p></div>
+      <div class="m-block"><p class="eyebrow">Why it asks</p><p>Volume and ticket size help establish the merchant's expected risk profile. Missing or inaccurate information can delay approval and create risk after boarding.</p></div>
+      <div class="m-block"><p class="eyebrow">Your role as a Pilot</p><p>Collect accurate, complete information and never code around the truth. If an account looks prohibited, high-risk or outside the normal profile, stop and escalate.</p></div>
+    </div>
+    <div class="say"><strong>Try it Out!</strong> Explain to a merchant why underwriting asks for their expected monthly volume and average ticket, in a way that makes the question feel reasonable rather than intrusive.</div>
+  </div></div>
+
+  <!-- PCI DSS -->
+  <div class="overlay" id="pci"><div class="popout" role="dialog" aria-modal="true" aria-labelledby="pciTitle">
+    <button type="button" class="modal-close" aria-label="Close">&times;</button>
+    <p class="eyebrow">Transaction &amp; Data Controls</p>
+    <h3 id="pciTitle">PCI DSS: protecting the card data behind every sale.</h3>
+    <p class="lead">PCI DSS is the Payment Card Industry Data Security Standard. It sets the security expectations for any business that stores, processes or transmits cardholder data.</p>
+    <div class="m-grid">
+      <div class="m-block"><p class="eyebrow">What it protects</p><p>The environment where cardholder data is stored, processed or transmitted, including terminals, software, networks and the people who handle card information.</p></div>
+      <div class="m-block"><p class="eyebrow">Why it matters after approval</p><p>Fraud tools evaluate a transaction in the moment. PCI DSS protects the data before, during and after it, so an approved sale does not become exposure later.</p></div>
+      <div class="m-block"><p class="eyebrow">Your role as a Pilot</p><p>Encourage secure processing practices and set accurate expectations. For PCI questions beyond what you know, bring in the right internal resource.</p></div>
+    </div>
+    <div class="say"><strong>Try it Out!</strong> In one or two sentences, explain to a merchant why PCI DSS matters to their business without using the words <em>compliance</em> or <em>standard</em>.</div>
+  </div></div>
+
+  <!-- Ongoing Monitoring -->
+  <div class="overlay" id="monitor"><div class="popout" role="dialog" aria-modal="true" aria-labelledby="monTitle">
+    <button type="button" class="modal-close" aria-label="Close">&times;</button>
+    <p class="eyebrow">Ongoing Monitoring</p>
+    <h3 id="monTitle">Approval sets the baseline. Monitoring watches for change.</h3>
+    <p class="lead">A merchant's risk profile does not stop at activation. Volume, ticket size, refunds and chargebacks continue to matter for as long as the merchant processes.</p>
+    <div class="m-grid">
+      <div class="m-block"><p class="eyebrow">What gets watched</p><p>Processing volume, ticket size, refunds and chargebacks compared with the profile the merchant was approved on.</p></div>
+      <div class="m-block"><p class="eyebrow">Why it matters</p><p>A sudden jump in ticket size or volume can mean the merchant's actual processing no longer matches the expected profile and needs another look.</p></div>
+      <div class="m-block"><p class="eyebrow">Your role as a Pilot</p><p>The numbers you collect during the sale become the baseline. If you learn a merchant's business or processing is changing, bring in the right internal resource.</p></div>
+    </div>
+    <div class="say"><strong>Try it Out!</strong> Your merchant was approved on a $40 average ticket and now runs several $900 transactions in one week. What questions would you ask, and who would you bring in?</div>
+  </div></div>
+</section>
+
+<script>
+(function(){
+  var lastBtn=null;
+  function closeAll(){
+    document.querySelectorAll('.overlay.open').forEach(function(p){p.classList.remove('open');});
+    if(lastBtn){lastBtn.focus();lastBtn=null;}
+  }
+  document.querySelectorAll('[data-open]').forEach(function(btn){
+    btn.addEventListener('click',function(){
+      closeAll();
+      var p=document.getElementById(btn.getAttribute('data-open'));
+      p.classList.add('open');p.querySelector('.popout').scrollTop=0;lastBtn=btn;
+      p.querySelector('.modal-close').focus();
+    });
+  });
+  document.querySelectorAll('.modal-close').forEach(function(c){c.addEventListener('click',closeAll);});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape')closeAll();});
+  document.querySelectorAll('.overlay').forEach(function(o){
+    o.addEventListener('click',function(e){if(e.target===o)closeAll();});
+  });
+})();
+</script>
+</body>
+</html>
